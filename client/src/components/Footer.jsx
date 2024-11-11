@@ -1,7 +1,8 @@
+import 'animate.css'
 
 const Footer = () => {
   return(
-      <div className="sticky bottom-0 left-0 flex w-full h-[3.5rem] bg-amber-700 z-50">
+      <div className="animate__animated animate__slideInUp sticky bottom-0 left-0 flex w-full h-[3.5rem] bg-amber-700 z-50">
 
           {/*Desktop Footer*/}
           <div className="sm:flex hidden flex-row items-center justify-center w-full">

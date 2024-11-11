@@ -1,4 +1,5 @@
 import {useEffect, useState, useRef} from 'react'
+import { Link } from 'react-router-dom'
 import 'animate.css';
 
 import Footer from "../components/Footer";
@@ -8,6 +9,7 @@ import image2 from '/main_scroll/2.jpg'
 import image3 from '/main_scroll/3.jpg'
 import image4 from '/main_scroll/4.jpg'
 import menuDisplay from '/food/menu_display_food.jpg'
+import FooterDoc from "../components/FooterDoc.jsx";
 
 
 
@@ -71,19 +73,49 @@ const Home = () => {
             </div>
             <div className="w-screen h-screen">
                 <div className="flex flex-col sm:flex-row justify-center items-center mt-4">
-                    <div className="w-[90vw] h-[40vh] sm:w-[40rem] sm:h-[25rem] bg-amber-700 p-5">
-                        <h1 className="text-3xl mt-8 text-black font-semibold sm:pl-28">Authentic traditional cuisine</h1>
-                        <p className="text-xl text-black my-4 sm:pl-28 sm:pr-16">We offer authentic, traditional dishes from around the world, out of fresh ingredients sourced from local farmers.</p>
+                    <div className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] p-5 shadow-2xl">
+                        <h1 className="text-3xl sm:mt-4 text-black font-semibold sm:pl-20">Authentic traditional
+                            cuisine</h1>
+                        <p className="text-xl text-black sm:my-4 my-2 sm:pl-20 sm:pr-16">We offer authentic, traditional dishes
+                            from around the world, out of fresh ingredients sourced from local farmers.</p>
 
-                        <button className="w-48 h-12 border border-black text-black text-xl font-medium hover:bg-black hover:text-white sm:ml-28 transition">VIEW OUR MENUS</button>
+                        <Link to={'/menu'}><button
+                            className="w-48 sm:h-12 h-10 border border-black text-black text-xl font-medium hover:bg-black hover:text-white sm:ml-20 transition">VIEW
+                            OUR MENUS
+                        </button></Link>
                     </div>
-                    <div className="w-[90vw] h-[40vh] sm:w-[40rem] sm:h-[25rem] bg-blue-700">
-                        <img className="h-[40vh] sm:w-[40rem] sm:h-[25rem] w-screen object-cover object-position-[50% 75%] transition select-none" src={menuDisplay} />
+                    <div
+                        className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] sm:ml-[-1rem] sm:mt-6 shadow-2xl">
+                        <img
+                            className="h-[40vh] sm:w-[35rem] sm:h-[20rem] w-screen object-cover object-position-[50% 75%] transition select-none"
+                            src={menuDisplay}/>
                     </div>
-
                 </div>
+
+                <div className="flex flex-col sm:flex-row justify-center items-center mt-4">
+                    <div className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] shadow-2xl">
+
+                        <img
+                            className="h-[40vh] sm:w-[35rem] sm:h-[20rem] w-screen object-cover object-position-[50% 75%] z-10 transition select-none"
+                            src={menuDisplay}/>
+
+                    </div>
+                    <div
+                        className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] sm:ml-[-4rem] sm:mt-6 p-5 shadow-2xl">
+
+                        <h1 className="text-3xl mt-4 text-black font-semibold sm:pl-28">Table reservation</h1>
+                        <p className="text-xl text-black my-4 sm:pl-28 sm:pr-16">Reserve a table at our restaurant for your preferred time and date, free of charge!</p>
+
+                        <Link to={'/reserve'}><button
+                            className="w-48 sm:h-12 h-10 border border-black text-black text-xl font-medium hover:bg-black hover:text-white sm:ml-28 transition">RESERVE NOW
+                        </button></Link>
+
+                    </div>
+                </div>
+
             </div>
 
+            <FooterDoc/>
             <Footer/>
         </div>
     )
