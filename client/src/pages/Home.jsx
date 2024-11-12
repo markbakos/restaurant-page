@@ -10,6 +10,7 @@ import image3 from '/main_scroll/3.jpg'
 import image4 from '/main_scroll/4.jpg'
 import menuDisplay from '/food/menu_display_food.jpg'
 import FooterDoc from "../components/FooterDoc.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 
 
@@ -63,7 +64,9 @@ const Home = () => {
     }, [])
 
     return (
+
         <div>
+            <Navbar/>
             <div id="home" className="h-screen flex items-center justify-center">
                 <img id="mainCollage"
                      src={image}
@@ -117,6 +120,7 @@ const Home = () => {
 
             <FooterDoc/>
             <Footer/>
+
         </div>
     )
 }
