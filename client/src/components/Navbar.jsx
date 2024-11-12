@@ -42,7 +42,7 @@ const Navbar = () => {
                                 <MenuItem>About Us</MenuItem>
                                 <MenuItem>Gallery</MenuItem>
                             </SubMenu>
-                            <MenuItem>Hours + Location</MenuItem>
+                            <Link to="/location"><MenuItem>Hours + Location</MenuItem></Link>
                             <MenuItem className="mt-6 text-center font-medium">Reserve</MenuItem>
                             <MenuItem className="text-center font-medium">Order</MenuItem>
                         </>
