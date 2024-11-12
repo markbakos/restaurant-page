@@ -12,12 +12,12 @@ const LocationHours = () => {
         <div>
             <Navbar />
             <div className="w-screen h-[40vh] sm:h-[30vh] flex justify-center items-center">
-                <img className="h-[40vh] sm:h-[30vh] w-screen object-cover object-center opacity-70 absolute select-none" src={menuBg}/>
+                <img className="h-[40vh] sm:h-[30vh] w-screen object-cover object-center opacity-70 absolute select-none left-0" src={menuBg}/>
                 <h1 className="text-center text-5xl z-10 font-semibold text-black select-none">HOURS + LOCATION</h1>
             </div>
             <div className="sm:h-[70vh] flex sm:flex-row flex-col justify-center items-center">
                 <div className="flex flex-col items-center my-2 w-1/2">
-                    <h1 className="text-2xl font-semibold">Our restaurant</h1>
+                    <h1 className="text-3xl font-semibold w-screen text-center">Our restaurant</h1>
                     <h2 className="text-xl">4 Rue Malher</h2>
                     <h2 className="text-xl">Paris 75004, France</h2>
                     <iframe
@@ -27,15 +27,15 @@ const LocationHours = () => {
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div className="flex flex-col items-center my-2 w-1/2">
-                    <h1 className="my-2 text-2xl font-semibold">HOURS</h1>
+                    <h1 className="my-2 text-4xl font-semibold">HOURS</h1>
                     <div>
-                        <div className={`${currentDay===0 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Sun ‎‎ ‎  </p> <p className="mx-1">11:00AM </p> <p>10:00PM</p></div>
-                        <div className={`${currentDay===1 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Mon‎ </p> <p className="mx-1">12:00PM </p> <p>10:00PM</p></div>
-                        <div className={`${currentDay===2 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Tue ‎ ‎ ‎ </p> <p className="mx-1">12:00PM </p> <p>10:00PM</p></div>
-                        <div className={`${currentDay===3 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Wed </p> <p className="mx-1">12:00PM </p> <p>10:00PM</p></div>
-                        <div className={`${currentDay===4 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Thu ‎  ‎ </p> <p className="mx-1">11:00AM </p> <p>10:00PM</p></div>
-                        <div className={`${currentDay===5 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Fri ‎ ‎  ‎ ‎ ‎  </p> <p className="mx-1">12:00PM </p> <p>11:00PM</p></div>
-                        <div className={`${currentDay===6 ? 'font-semibold' : 'font-medium'} flex text-xl`}><p className="font-semibold">Sat ‎  ‎  ‎  ‎ </p> <p className="mx-1">11:00AM </p> <p>11:00PM</p></div>
+                        <div className={`${currentDay===0 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Sun ‎‎ ‎  </p> <p className="mx-1">11:00AM </p> <p>10:00PM</p></div>
+                        <div className={`${currentDay===1 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Mon‎ </p> <p className="mx-1">12:00PM </p> <p>10:00PM</p></div>
+                        <div className={`${currentDay===2 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Tue ‎ ‎ ‎ </p> <p className="mx-1">12:00PM </p> <p>10:00PM</p></div>
+                        <div className={`${currentDay===3 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Wed </p> <p className="mx-1">12:00PM </p> <p>10:00PM</p></div>
+                        <div className={`${currentDay===4 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Thu ‎  ‎ </p> <p className="mx-1">11:00AM </p> <p>10:00PM</p></div>
+                        <div className={`${currentDay===5 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Fri ‎ ‎  ‎ ‎ ‎  </p> <p className="mx-1">12:00PM </p> <p>11:00PM</p></div>
+                        <div className={`${currentDay===6 ? 'font-semibold' : 'font-medium'} flex text-2xl`}><p className="font-semibold">Sat ‎  ‎  ‎  ‎ </p> <p className="mx-1">11:00AM </p> <p>11:00PM</p></div>
                     </div>
                 </div>
             </div>
