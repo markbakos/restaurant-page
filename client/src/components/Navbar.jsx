@@ -39,11 +39,11 @@ const Navbar = () => {
                                 <MenuItem>Lunch</MenuItem>
                             </SubMenu>
                             <SubMenu label="About">
-                                <MenuItem>About Us</MenuItem>
+                                <Link to="/aboutus"><MenuItem>About Us</MenuItem></Link>
                                 <MenuItem>Gallery</MenuItem>
                             </SubMenu>
                             <Link to="/location"><MenuItem>Hours + Location</MenuItem></Link>
-                            <MenuItem className="mt-6 text-center font-medium">Reserve</MenuItem>
+                            <Link to="/reserve"><MenuItem className="mt-6 text-center font-medium">Reserve</MenuItem></Link>
                             <MenuItem className="text-center font-medium">Order</MenuItem>
                         </>
                     )}
