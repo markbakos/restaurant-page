@@ -13,10 +13,12 @@ const Navbar = () => {
     }
 
     return (
-        <div className="fixed top-0 left-0 z-50">
-            <div onClick={handleCollapseSidebar} className={`${collapsed ? "visible" : "hidden"} text-amber-700 p-4 sm:p-8 sm:pl-10`}>
+        <nav className="fixed top-0 left-0 z-50">
+            <button onClick={handleCollapseSidebar}
+                    className={`${collapsed ? "visible" : "hidden"} text-amber-700 p-4 sm:p-8 sm:pl-10`}
+                    aria-label="Toggle Sidebar" >
                 <MenuOutlinedIcon sx={{ fontSize: 38 }} />
-            </div>
+            </button>
 
             <Sidebar
                 collapsed={collapsed}
@@ -49,7 +51,7 @@ const Navbar = () => {
                     )}
                 </Menu>
             </Sidebar>
-        </div>
+        </nav>
     )
 }
 

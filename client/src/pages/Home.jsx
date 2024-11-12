@@ -65,45 +65,52 @@ const Home = () => {
 
     return (
 
-        <div>
+        <>
             <Navbar/>
-            <div id="home" className="h-screen flex items-center justify-center">
+            <header id="home" className="h-screen flex items-center justify-center">
                 <img id="mainCollage"
                      src={image}
+                     alt="Collage Image of our restaurant"
                     className={`absolute h-screen w-screen object-cover select-none animate__animated ${animateClass}`}
                 />
                 <h1 id="collageTitle" className={`${titleColor} text-5xl z-10 font-bold select-none  animate__animated animate__fadeIn`}>Our Restaurant</h1>
-            </div>
-            <div className="w-screen h-screen">
-                <div className="flex flex-col sm:flex-row justify-center items-center mt-4">
-                    <div className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] p-5 shadow-2xl">
+            </header>
+            <main className="w-screen h-screen">
+                <section className="flex flex-col sm:flex-row justify-center items-center mt-4">
+                    <article className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] p-5 shadow-2xl">
                         <h1 className="text-3xl sm:mt-4 text-black font-semibold sm:pl-20">Authentic traditional
                             cuisine</h1>
                         <p className="text-xl text-black sm:my-4 my-2 sm:pl-20 sm:pr-16">We offer authentic, traditional dishes
                             from around the world, out of fresh ingredients sourced from local farmers.</p>
 
                         <Link to={'/menu'}><button
-                            className="w-48 sm:h-12 h-10 border border-black text-black text-xl font-medium hover:bg-black hover:text-white sm:ml-20 transition">VIEW
+                            className="w-48 sm:h-12 h-10 border border-black text-black text-xl font-medium hover:bg-black hover:text-white sm:ml-20 transition"
+
+                        >VIEW
                             OUR MENUS
                         </button></Link>
-                    </div>
-                    <div
+                    </article>
+                    <figure
                         className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] sm:ml-[-1rem] sm:mt-6 shadow-2xl">
                         <img
                             className="h-[40vh] sm:w-[35rem] sm:h-[20rem] w-screen object-cover object-position-[50% 75%] transition select-none"
-                            src={menuDisplay}/>
-                    </div>
-                </div>
+                            src={menuDisplay}
+                            alt="Image to pair with Menu Section"
+                        />
+                    </figure>
+                </section>
 
-                <div className="flex flex-col sm:flex-row justify-center items-center mt-4">
-                    <div className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] shadow-2xl">
+                <section className="flex flex-col sm:flex-row justify-center items-center mt-4">
+                    <figure className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] shadow-2xl">
 
                         <img
                             className="h-[40vh] sm:w-[35rem] sm:h-[20rem] w-screen object-cover object-position-[50% 75%] z-10 transition select-none"
-                            src={menuDisplay}/>
+                            src={menuDisplay}
+                            alt="Image to pair with Table Reservation Section"
+                        />
 
-                    </div>
-                    <div
+                    </figure>
+                    <article
                         className="w-[90vw] h-[40vh] sm:w-[35rem] sm:h-[20rem] sm:ml-[-4rem] sm:mt-6 p-5 shadow-2xl">
 
                         <h1 className="text-3xl mt-4 text-black font-semibold sm:pl-28">Table reservation</h1>
@@ -113,15 +120,15 @@ const Home = () => {
                             className="w-48 sm:h-12 h-10 border border-black text-black text-xl font-medium hover:bg-black hover:text-white sm:ml-28 transition">RESERVE NOW
                         </button></Link>
 
-                    </div>
-                </div>
+                    </article>
+                </section>
 
-            </div>
+            </main>
 
             <FooterDoc/>
             <Footer/>
 
-        </div>
+        </>
     )
 }
 

@@ -2,11 +2,11 @@ import 'animate.css'
 
 const Footer = () => {
   return(
-      <div className="animate__animated animate__slideInUp sticky bottom-0 left-0 flex w-full h-[3.5rem] bg-amber-700 z-50">
+      <footer className="animate__animated animate__slideInUp sticky bottom-0 left-0 flex w-full h-[3.5rem] bg-amber-700 z-50">
 
           {/*Desktop Footer*/}
-          <div className="sm:flex hidden flex-row items-center justify-center w-full">
-              <div className="flex flex-row items-center">
+          <footer className="sm:flex hidden flex-row items-center justify-center w-full">
+              <address className="flex flex-row items-center">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 mr-1" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g stroke-width="0"></g>
                       <g stroke-linecap="round" stroke-linejoin="round"></g>
@@ -22,7 +22,7 @@ const Footer = () => {
                   <a href="https://maps.app.goo.gl/fvonVmPipU5vC7Qe8" target="_blank">
                       <p className="text-white text-sm font-medium">4 Rue Malher, Paris, France</p>
                   </a>
-              </div>
+              </address>
 
               <div className="flex flex-row items-center ml-10">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 mr-2" fill="none">
@@ -38,7 +38,7 @@ const Footer = () => {
                   </a>
               </div>
 
-              <div className="cursor-pointer flex flex-row items-center ml-10">
+              <time className="cursor-pointer flex flex-row items-center ml-10">
                   <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 mr-2">
                       <g stroke-width="0"></g>
                       <g stroke-linecap="round" stroke-linejoin="round"></g>
@@ -49,7 +49,7 @@ const Footer = () => {
                       </g>
                   </svg>
                   <p className="text-white text-sm font-medium">08:00 AM - 11:00 PM</p>
-              </div>
+              </time>
 
               <div className="cursor-pointer flex flex-row items-center ml-10">
                   <svg fill="#FFFFFF" className="h-8 w-8 mr-2" viewBox="0 0 24 24">
@@ -78,14 +78,14 @@ const Footer = () => {
                   </svg>
                   <p className="text-white text-sm font-medium">Careers</p>
               </div>
-          </div>
+          </footer>
 
           {/*Mobile Footer*/}
 
-          <div className="flex sm:hidden flex-row items-center justify-between w-full px-8">
+          <footer className="flex sm:hidden flex-row items-center justify-between w-full px-8">
 
               <a href="https://maps.app.goo.gl/fvonVmPipU5vC7Qe8" target="_blank">
-                  <div className="flex flex-col items-center">
+                  <address className="flex flex-col items-center">
                       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g stroke-width="0"></g>
                           <g stroke-linecap="round" stroke-linejoin="round"></g>
@@ -101,7 +101,7 @@ const Footer = () => {
                           </g>
                       </svg>
                       <p className="text-white text-sm font-medium">Location</p>
-                  </div>
+                  </address>
               </a>
 
               <div className="flex flex-col items-center">
@@ -118,7 +118,7 @@ const Footer = () => {
                   </a>
               </div>
 
-              <div className="cursor-pointer flex flex-col items-center">
+              <time className="cursor-pointer flex flex-col items-center">
                   <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8">
                       <g stroke-width="0"></g>
                       <g stroke-linecap="round" stroke-linejoin="round"></g>
@@ -129,7 +129,7 @@ const Footer = () => {
                       </g>
                   </svg>
                   <p className="text-white text-sm font-medium">Times</p>
-              </div>
+              </time>
 
               <div className="cursor-pointer flex flex-col items-center">
                   <svg fill="#FFFFFF" className="h-8 w-8" viewBox="0 0 24 24">
@@ -142,9 +142,9 @@ const Footer = () => {
                   </svg>
                   <p className="text-white text-sm font-medium">Our menu</p>
               </div>
-          </div>
+          </footer>
 
-      </div>
+      </footer>
   )
 }
 
