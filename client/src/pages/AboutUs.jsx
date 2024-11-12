@@ -2,6 +2,7 @@ import menuBg from "/aboutusbg.jpg";
 import img from "/aboutusimg.jpg"
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
+import FooterDoc from "../components/FooterDoc.jsx";
 
 const AboutUs = () => {
   return (
@@ -23,6 +24,7 @@ const AboutUs = () => {
               <p className="my-1">We are rated 4.2 stars on Google from 2700+ reviews.</p>
               <p className="my-1">We are ranked #1 in our area on <a href="https://www.tripadvisor.com/" target="_blank" className="text-blue-600">Tripadvisor</a></p>
           </main>
+          <FooterDoc />
           <Footer />
       </>
 

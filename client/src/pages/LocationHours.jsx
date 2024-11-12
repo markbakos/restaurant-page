@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar.jsx";
 
 import menuBg from '/hoursbg.jpg'
 import Footer from "../components/Footer.jsx";
+import FooterDoc from "../components/FooterDoc.jsx";
 
 const LocationHours = () => {
 
@@ -40,7 +41,8 @@ const LocationHours = () => {
                     </section>
                 </article>
             </main>
-            <Footer className="bg-amber-200" />
+            <FooterDoc />
+            <Footer />
         </div>
     )
 }
