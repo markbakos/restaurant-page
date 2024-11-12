@@ -40,7 +40,7 @@ const Navbar = () => {
                             </SubMenu>
                             <SubMenu label="About">
                                 <Link to="/aboutus"><MenuItem>About Us</MenuItem></Link>
-                                <MenuItem>Gallery</MenuItem>
+                                <Link to="/gallery"><MenuItem>Gallery</MenuItem></Link>
                             </SubMenu>
                             <Link to="/location"><MenuItem>Hours + Location</MenuItem></Link>
                             <Link to="/reserve"><MenuItem className="mt-6 text-center font-medium">Reserve</MenuItem></Link>
