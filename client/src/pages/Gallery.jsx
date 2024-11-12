@@ -1,6 +1,7 @@
 import img from "/gallerybg.jpg";
 import {useEffect, useState} from "react";
 import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 
 
 const Gallery = () => {
@@ -58,6 +59,7 @@ const Gallery = () => {
                 </div>
             </section>
             </main>
+            <Footer />
         </>
 
     )
