@@ -47,6 +47,8 @@ const Navbar = () => {
                             <Link to="/location"><MenuItem>Hours + Location</MenuItem></Link>
                             <Link to="/reserve"><MenuItem className="mt-6 text-center font-medium">Reserve</MenuItem></Link>
                             <MenuItem className="text-center font-medium">Order</MenuItem>
+                            <h1 className="mt-10 text-center text2xl font-medium text-red-500 select-none">Admin:</h1>
+                            <Link to="/reservations"><MenuItem>Reservations</MenuItem></Link>
                         </>
                     )}
                 </Menu>

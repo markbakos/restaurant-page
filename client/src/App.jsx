@@ -6,6 +6,7 @@ import Menu from './pages/Menu.jsx'
 import LocationHours from './pages/LocationHours.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import Gallery from "./pages/Gallery.jsx";
+import Reservations from "./pages/Reservations.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/reserve" element={<Reserve />} />
+                  <Route path="/reservations" element={<Reservations />}/>
                   <Route path="/menu" element={<Menu />} />
                   <Route path="/location" element={<LocationHours />} />
                   <Route path="/aboutus" element={<AboutUs />} />
