@@ -38,12 +38,16 @@ router.post('/reserve', async (req, res) => {
 });
 
 router.get('/reservations', async (req, res) => {
-    const { page = 1, limit = 10, date} = req.query;
+    const { page = 1, limit = 10, date, name} = req.query;
 
     let query = {};
 
     if(date){
         query.date = date;
+    }
+
+    if(name){
+        query.name = {$regex: name, $options: 'i'};
     }
 
     try{

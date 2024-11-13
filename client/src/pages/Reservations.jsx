@@ -13,11 +13,20 @@ const Reservations = () => {
     const [ reservations, setReservations ] = useState([])
     const [ totalPages, setTotalPages ] = useState(1)
 
+    const [date, setDate] = useState();
+    const [name, setName] = useState();
+
     const displayReservations = () => {
+        const params = new URLSearchParams({
+                page: currentPage,
+                ...(date && { date }),
+                ...(name && { name })
+            }
+        )
+
         try {
-            axios.get(`https://restaurant-page-backend.onrender.com/api/reservations?page=${currentPage}`)
+            axios.get(`https://restaurant-page-backend.onrender.com/api/reservations?${params.toString()}`)
                 .then((response) => {
-                    console.log(response.data)
                     setTotalPages(response.data.totalPages)
                     setReservations(response.data.reservations)
                 })
@@ -27,20 +36,18 @@ const Reservations = () => {
         }
     }
 
-    const searchReservations = (date) => {
-        console.log(date)
-        try {
-            axios.get(`https://restaurant-page-backend.onrender.com/api/reservations?date=${date}`)
-                .then((response) => {
-                    console.log(response.data)
-                    setTotalPages(response.data.totalPages)
-                    setReservations(response.data.reservations)
-                })
-        }
-        catch (e) {
-            console.error(e)
-        }
-    }
+    const handleDateChange = (e) => {
+        setDate(e.target.value);
+        setCurrentPage(1);
+        displayReservations()
+    };
+
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+        setCurrentPage(1);
+        displayReservations()
+    };
+
     
     useEffect(() => {
         displayReservations()
@@ -63,7 +70,7 @@ const Reservations = () => {
                 />
                 <h1 className="text-center text-5xl z-10 font-semibold text-black select-none">RESERVATIONS</h1>
             </header>
-            <main className="flex flex-col items-center my-5 h-[60vh] sm:h-[70vh] text-center text-xl mb-60 sm:mb-0">
+            <main className="flex flex-col items-center my-5 h-[60vh] sm:h-[70vh] text-center text-xl mb-20">
                 <h1 className="mt-5 text-center text-xl">This is an admin page, there is no authentication for demonstration</h1>
 
                 <nav className="flex flex-col items-center my-4">
@@ -82,10 +89,20 @@ const Reservations = () => {
                         </li>
                     </ul>
 
-                    <section className="flex flex-row my-4">
-                        <p>Search by date:</p>
+                    <section className="flex flex-row justify-center items-center my-4">
+                        <p className="text-2xl">Search by date:</p>
                         <input type="date"
-                               onChange={(e) => searchReservations(e.target.value)} />
+                               onChange={handleDateChange}
+                               className="border border-black px-4 py-2 mx-5"
+                        />
+                    </section>
+
+                    <section className="flex flex-row justify-center items-center my-4">
+                        <p className="text-2xl">Search by name:</p>
+                        <input type="text"
+                               onChange={handleNameChange}
+                               className="border border-black px-4 py-2 mx-5"
+                        />
                     </section>
 
                 </nav>
