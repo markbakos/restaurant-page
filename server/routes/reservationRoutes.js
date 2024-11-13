@@ -39,7 +39,12 @@ router.post('/reserve', async (req, res) => {
 
 router.get('/reservations', async (req, res) => {
     const { page = 1, limit = 10, date} = req.query;
-    const query = date ? { date: new Date(date)} : {};
+
+    let query = {};
+
+    if(date){
+        query.date = date;
+    }
 
     try{
        const reservations = await Reservation.find(query)

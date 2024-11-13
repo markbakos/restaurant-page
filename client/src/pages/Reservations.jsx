@@ -26,6 +26,21 @@ const Reservations = () => {
             console.error(e)
         }
     }
+
+    const searchReservations = (date) => {
+        console.log(date)
+        try {
+            axios.get(`https://restaurant-page-backend.onrender.com/api/reservations?date=${date}`)
+                .then((response) => {
+                    console.log(response.data)
+                    setTotalPages(response.data.totalPages)
+                    setReservations(response.data.reservations)
+                })
+        }
+        catch (e) {
+            console.error(e)
+        }
+    }
     
     useEffect(() => {
         displayReservations()
@@ -51,9 +66,9 @@ const Reservations = () => {
             <main className="flex flex-col items-center my-5 h-[60vh] sm:h-[70vh] text-center text-xl mb-60 sm:mb-0">
                 <h1 className="mt-5 text-center text-xl">This is an admin page, there is no authentication for demonstration</h1>
 
-                <nav className="flex flex-row items-center my-4">
+                <nav className="flex flex-col items-center my-4">
 
-                    <ul className="flex justify-between mx-6">
+                    <ul className="flex flex-row justify-between mx-6">
                         <li>
                             <button aria-label="Previous Page" onClick={() => pageChange('backward')} className="select-none">
                                 <ArrowBackIosIcon sx={{width: '1.5rem', height: '1.5rem'}}/>
@@ -66,6 +81,12 @@ const Reservations = () => {
                             </button>
                         </li>
                     </ul>
+
+                    <section className="flex flex-row my-4">
+                        <p>Search by date:</p>
+                        <input type="date"
+                               onChange={(e) => searchReservations(e.target.value)} />
+                    </section>
 
                 </nav>
 
