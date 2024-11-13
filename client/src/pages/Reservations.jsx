@@ -15,7 +15,7 @@ const Reservations = () => {
 
     const displayReservations = () => {
         try {
-            axios.get(`http://localhost:5000/api/reservations?page=${currentPage}`)
+            axios.get(`https://restaurant-page-backend.onrender.com/api/reservations?page=${currentPage}`)
                 .then((response) => {
                     console.log(response.data)
                     setTotalPages(response.data.totalPages)

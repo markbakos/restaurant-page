@@ -21,7 +21,7 @@ const Reserve = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post('http://localhost:5000/api/reserve', {
+            const response = await axios.post('https://restaurant-page-backend.onrender.com/api/reserve', {
                 name,
                 email,
                 phone,
