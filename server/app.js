@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const reservationRoutes = require('./routes/reservationRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
     .catch(err => console.error('MongoDB connection error:', err));
 
 app.use('/api', reservationRoutes);
+app.use('/api', orderRoutes);
 
 const PORT = process.env.PORT || 5000;
 
