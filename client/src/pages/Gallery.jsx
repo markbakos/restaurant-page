@@ -11,26 +11,15 @@ const Gallery = () => {
     const [data, setData] = useState([])
 
     const getPhotos = async () => {
-        try{
-            const data = await fetch(`https://api.pexels.com/v1/search?query=restaurant&per_page=10`, {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: import.meta.env.PEXELS_KEY,
-                }
-            })
-                .then((response) => {
-                    return response.json()
-                })
-                .then((data) => {
-                    setData(data.photos)
-                    console.log(data)
-                })
-
-
-        }
-        catch (e) {
-            console.error(e)
+        try {
+            const response = await fetch('http://localhost:5000/api/photos')
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`)
+            }
+            const data = await response.json()
+            setData(data.photos)
+        } catch (e) {
+            console.error('Failed to fetch photos:', e)
         }
     }
 

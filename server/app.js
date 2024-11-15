@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 
 const reservationRoutes = require('./routes/reservationRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const photosRoutes = require('./routes/photosRoutes');
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.use('/api', reservationRoutes);
 app.use('/api', orderRoutes);
+app.use('/api', photosRoutes);
 
 const PORT = process.env.PORT || 5000;
 
