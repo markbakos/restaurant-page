@@ -12,7 +12,7 @@ const Gallery = () => {
 
     const getPhotos = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/photos')
+            const response = await fetch('https://restaurant-page-backend.onrender.com/api/photos')
             if (!response.ok) {
                 throw new Error(`Error: ${response.statusText}`)
             }
