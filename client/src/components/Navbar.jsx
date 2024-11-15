@@ -36,17 +36,16 @@ const Navbar = () => {
                             <Link to="/"><MenuItem>Home</MenuItem></Link>
                             <SubMenu label="Menu">
                                 <Link to={'/menu'}><MenuItem>All Items</MenuItem></Link>
-                                <MenuItem>Deals</MenuItem>
-                                <MenuItem>Breakfast</MenuItem>
-                                <MenuItem>Lunch</MenuItem>
+                                <Link to="/menu#deals"><MenuItem>Deals</MenuItem></Link>
+                                <Link to="/menu#breakfast"><MenuItem>Breakfast</MenuItem></Link>
+                                <Link to="/menu#lunch"><MenuItem>Lunch</MenuItem></Link>
                             </SubMenu>
                             <SubMenu label="About">
                                 <Link to="/aboutus"><MenuItem>About Us</MenuItem></Link>
                                 <Link to="/gallery"><MenuItem>Gallery</MenuItem></Link>
                             </SubMenu>
                             <Link to="/location"><MenuItem>Hours + Location</MenuItem></Link>
-                            <Link to="/reserve"><MenuItem className="mt-6 text-center font-medium">Reserve</MenuItem></Link>
-                            <MenuItem className="text-center font-medium">Order</MenuItem>
+                            <Link to="/reserve"><MenuItem>Reserve</MenuItem></Link>
                             <h1 className="mt-10 text-center text2xl font-medium text-red-500 select-none">Admin:</h1>
                             <Link to="/reservations"><MenuItem>Reservations</MenuItem></Link>
                         </>

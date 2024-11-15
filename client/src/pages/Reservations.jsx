@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar.jsx";
-import img from "/reservebg.jpg";
+import img from "/reservationsbg.jpg";
 
 import axios from "axios";
 import {useEffect, useState} from "react";
