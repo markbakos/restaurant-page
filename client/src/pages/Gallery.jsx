@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import FooterDoc from "../components/FooterDoc.jsx";
+import {useLocation} from "react-router-dom";
 
 
 const Gallery = () => {
@@ -36,6 +37,12 @@ const Gallery = () => {
     useEffect(() => {
         getPhotos()
     }, [])
+
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
 
     return (
         <>

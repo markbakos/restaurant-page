@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import Navbar from "../components/Navbar.jsx";
 import img from "/reservebg.jpg";
 import Footer from "../components/Footer.jsx";
 import FooterDoc from "../components/FooterDoc.jsx";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const Reserve = () => {
 
@@ -35,13 +35,19 @@ const Reserve = () => {
         }
     }
 
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
   return(
       <>
           <Navbar />
           <header className="w-screen h-[40vh] sm:h-[30vh] flex justify-center items-center">
               <img
                   className="h-[40vh] sm:h-[30vh] w-screen object-cover object-center opacity-70 absolute left-0 select-none"
-                  src={img} alt="Title image for Gallery Section"
+                  src={img} alt="Title image for Reserve Section"
               />
               <h1 className="text-center text-5xl z-10 font-semibold text-black select-none">RESERVE</h1>
           </header>

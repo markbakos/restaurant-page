@@ -3,11 +3,19 @@ import Navbar from "../components/Navbar.jsx";
 import menuBg from '/hoursbg.jpg'
 import Footer from "../components/Footer.jsx";
 import FooterDoc from "../components/FooterDoc.jsx";
+import {useLocation} from "react-router-dom";
+import {useEffect} from "react";
 
 const LocationHours = () => {
 
     const currentDate = new Date();
     const currentDay = currentDate.getDay()
+
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
 
     return (
         <div>

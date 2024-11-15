@@ -3,8 +3,17 @@ import img from "/aboutusimg.jpg"
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import FooterDoc from "../components/FooterDoc.jsx";
+import {useLocation} from "react-router-dom";
+import {useEffect} from "react";
 
 const AboutUs = () => {
+
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
   return (
       <>
           <Navbar />

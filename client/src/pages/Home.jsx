@@ -1,5 +1,5 @@
 import {useEffect, useState, useRef} from 'react'
-import { Link } from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import 'animate.css';
 
 import Footer from "../components/Footer";
@@ -9,6 +9,7 @@ import image2 from '/main_scroll/2.jpg'
 import image3 from '/main_scroll/3.jpg'
 import image4 from '/main_scroll/4.jpg'
 import menuDisplay from '/food/menu_display_food.jpg'
+import reserveDisplay from '/reservehomebg.jpg'
 import FooterDoc from "../components/FooterDoc.jsx";
 import Navbar from "../components/Navbar.jsx";
 
@@ -63,6 +64,12 @@ const Home = () => {
         return () => clearInterval(interval)
     }, [])
 
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
     return (
 
         <>
@@ -105,7 +112,7 @@ const Home = () => {
 
                         <img
                             className="h-[40vh] sm:w-[35rem] sm:h-[20rem] w-screen object-cover object-position-[50% 75%] z-10 transition select-none"
-                            src={menuDisplay}
+                            src={reserveDisplay}
                             alt="Image to pair with Table Reservation Section"
                         />
 
