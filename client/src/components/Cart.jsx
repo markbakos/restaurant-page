@@ -66,16 +66,29 @@ const Cart = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const cartItems = cart.map((item) => ({
+            itemName: item.name,
+            price: item.price,
+            quantity: item.quantity
+        }))
+
         try {
             const response = await axios.post('https://restaurant-page-backend.onrender.com/api/orders', {
                 customerName: fullName,
                 customerEmail: email,
                 customerPhone: phone,
                 customerAddress: address,
-                items: cart,
+                items: cartItems,
                 totalAmount: total,
                 notes: notes,
             })
+            setFullName('')
+            setEmail('')
+            setPhone('')
+            setAddress('')
+            setNotes('')
+            alert('Order successfully placed!')
             console.log(response.data)
         } catch (error) {
             console.error(error)
@@ -213,11 +226,11 @@ const Cart = () => {
 
                             <div>
                                 <h2 className="text-xl">
-                                    Notes
+                                    Special Requests
                                 </h2>
                                 <textarea
                                     maxLength="200"
-                                    placeholder="Enter your notes..."
+                                    placeholder="Enter your note..."
                                     className="bg-white border-2 border-black p-2 my-2 resize-none lg:w-[30rem] w-[20rem] h-[8rem]"
                                     value={notes}
                                     onChange={(e) => setNotes(e.target.value)}
@@ -227,7 +240,7 @@ const Cart = () => {
                             </div>
 
                             <div>
-                                <button type="submit" aria-label="Order">
+                                <button type="submit" aria-label="Order" className="border-black border-2 p-2 w-32 hover:bg-black hover:text-white transition">
                                     Order
                                 </button>
                             </div>
