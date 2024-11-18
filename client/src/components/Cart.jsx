@@ -89,6 +89,7 @@ const Cart = () => {
                 totalAmount: total,
                 notes: notes,
             })
+            setCart([])
             setFullName('')
             setEmail('')
             setPhone('')
