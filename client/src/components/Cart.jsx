@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./Navbar.jsx";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import {DeleteOutline} from "@mui/icons-material";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import axios from "axios";
 
 
@@ -56,6 +56,12 @@ const Cart = () => {
         const updatedCart = cart.filter((item) => item.name !== itemName)
         updateCart(updatedCart)
     }
+
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
 
 
     const [fullName, setFullName] = useState('')
@@ -166,9 +172,9 @@ const Cart = () => {
                     </section>
                 </section>
 
-                <section className="lg:w-1/2 flex justify-center items-center">
+                <section className="lg:w-1/2 flex justify-center items-center lg:mt-0 mt-5">
                     <section
-                        className="mr-5 p-3 lg:w-[48rem] md:w-[90vw] w-[90vw] sm:h-[40rem] bg-stone-100 shadow-2xl rounded-md">
+                        className="ml-5 p-3 lg:w-[48rem] md:w-[90vw] sm:w-[90vw] sm:h-[40rem] bg-stone-100 shadow-2xl rounded-md">
                         <form
                             className="grid lg:grid-cols-2 sm:grid-cols-1 lg:gap-y-10 sm:gap-y-5"
                             onSubmit={handleSubmit}
@@ -240,7 +246,8 @@ const Cart = () => {
                             </div>
 
                             <div>
-                                <button type="submit" aria-label="Order" className="border-black border-2 p-2 w-32 hover:bg-black hover:text-white transition">
+                                <button type="submit" aria-label="Order"
+                                        className="border-black border-2 p-2 w-32 hover:bg-black hover:text-white transition">
                                     Order
                                 </button>
                             </div>
