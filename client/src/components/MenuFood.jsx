@@ -1,5 +1,21 @@
 
 const MenuFood = ({itemName, itemDescription , img, price}) => {
+
+    const addToCart = () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || []
+
+        const itemIndex = cart.findIndex(item => item.name === itemName)
+
+        if (itemIndex === -1) {
+            cart.push({name: itemName, price: price, quantity: 1})
+        } else {
+            cart[itemIndex].quantity++
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart))
+        console.log(localStorage.getItem("cart"))
+    }
+
     return (
         <section className="flex sm:flex-row flex-col justify-between m-2 p-4 lg:w-[48rem] lg:h-72 md:w-[90vw] md:h-[16rem] sm:w-[90vw] sm:h-[40rem] bg-slate-300 rounded-md">
             <figure className="lg:w-1/2 md:w-full sm:w-full p-2 flex justify-center items-center">
@@ -8,12 +24,12 @@ const MenuFood = ({itemName, itemDescription , img, price}) => {
             <figcaption className="lg:w-1/2 md:w-full sm:w-full p-2 flex justify-center items-center flex-col">
                 <h1
                     className="text-2xl font-semibold">
-                    {itemName} - {price}
+                    {itemName} - ${price}
                 </h1>
                 <p className="my-3">
                     {itemDescription}
                 </p>
-                <button className="w-32 h-10 border-black border-2 hover:bg-black hover:text-white transition">
+                <button onClick={addToCart} className="w-32 h-10 border-black border-2 hover:bg-black hover:text-white transition">
                     Add to cart
                 </button>
             </figcaption>

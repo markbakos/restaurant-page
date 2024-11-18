@@ -7,6 +7,7 @@ import LocationHours from './pages/LocationHours.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import Gallery from "./pages/Gallery.jsx";
 import Reservations from "./pages/Reservations.jsx";
+import Cart from "./components/Cart.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                   <Route path="/location" element={<LocationHours />} />
                   <Route path="/aboutus" element={<AboutUs />} />
                   <Route path="/gallery" element={<Gallery/>}/>
+                  <Route path="/cart" element={<Cart />} />
               </Routes>
           </div>
       </Router>

@@ -16,6 +16,11 @@ const orderSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    customerAddress: {
+        type: String,
+        required: true,
+        trim: true
+    },
     orderDate: {
         type: Date,
         default: Date.now,

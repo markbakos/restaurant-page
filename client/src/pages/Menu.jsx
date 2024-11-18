@@ -1,8 +1,10 @@
 import Navbar from "../components/Navbar.jsx";
 import img from "/menubg.jpg";
 import MenuFood from "../components/MenuFood.jsx";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useEffect} from "react";
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import cheeseburger from "/food/cheeseburger.jpg"
 import avocado from "/food/avocado.jpg"
@@ -44,10 +46,17 @@ const Menu = () => {
         }
     }, [location]);
 
-
     return (
         <>
             <Navbar/>
+            <Link to="/cart">
+            <button className={`fixed top-8 right-10 z-30 text-amber-700`}
+                    aria-label="Open Cart"
+            >
+                <ShoppingCartIcon sx={{ fontSize: 38 }} />
+            </button>
+            </Link>
+
             <header className="w-screen h-[40vh] sm:h-[30vh] flex justify-center items-center">
                 <img
                     className="h-[40vh] sm:h-[30vh] w-screen object-cover object-center opacity-70 absolute left-0 select-none"
@@ -65,14 +74,14 @@ const Menu = () => {
                         itemName="Family Feast"
                         itemDescription="Including 4 Burgers, 4 Fries, 4 Beverages, and 4 Desserts"
                         img={familyfeast}
-                        price="$29.99"
+                        price="29.99"
                     />
 
                     <MenuFood
                         itemName="Lunch Combo"
                         itemDescription="Choose a burger, a side of fries, and a drink."
                         img={lunchcombo}
-                        price="$9.99"
+                        price="9.99"
                     />
                 </section>
 
@@ -87,21 +96,21 @@ const Menu = () => {
                         itemName="American Pancakes"
                         itemDescription="5 Fluffy pancakes with maple syrup and butter"
                         img={pancakes}
-                        price="$6.99"
+                        price="6.99"
                     />
 
                     <MenuFood
                         itemName="Breakfast Burrito"
                         itemDescription="Scrambled eggs, sausage, cheese and hash browns wrapped in a soft tortilla."
                         img={burrito}
-                        price="$8.49"
+                        price="8.49"
                     />
 
                     <MenuFood
                         itemName="Avocado Toast"
                         itemDescription="Toasted sourdough topped with avocado, cherry tomatoes, and a dash of chili flakes."
                         img={avocado}
-                        price="$7.49"
+                        price="7.49"
                     />
 
                 </section>
@@ -117,42 +126,42 @@ const Menu = () => {
                         itemName="Grilled Chicken Sandwich"
                         itemDescription="Marinated grilled chicken with lettuce, tomato, and mayo on a brioche bun."
                         img={grilledchicken}
-                        price="$10.49"
+                        price="10.49"
                     />
 
                     <MenuFood
                         itemName="Caesar Salad"
                         itemDescription="Fresh romaine, croutons, Parmesan, and Caesar dressing."
                         img={caesar}
-                        price="$12.99"
+                        price="12.99"
                     />
 
                     <MenuFood
                         itemName="Spaghetti Bolognese"
                         itemDescription="Pasta served with rich beef and tomato sauce topped with Parmesan."
                         img={spaghetti}
-                        price="$12.99"
+                        price="12.99"
                     />
 
                     <MenuFood
                         itemName="Steak & Fries"
                         itemDescription="Juicy grilled steak with herb butter, served with a side of crispy fries."
                         img={steak}
-                        price="$19.99"
+                        price="19.99"
                     />
 
                     <MenuFood
                         itemName="Grilled Salmon"
                         itemDescription="Fresh salmon fillet served with steamed vegetables and lemon butter sauce."
                         img={salmon}
-                        price="$17.99"
+                        price="17.99"
                     />
 
                     <MenuFood
                         itemName="Vegetarian Lasagna"
                         itemDescription="Layers of pasta, ricotta, spinach, and marinara sauce, baked to perfection."
                         img={lasagna}
-                        price="$14.99"
+                        price="14.99"
                     />
 
                 </section>
@@ -169,21 +178,21 @@ const Menu = () => {
                         itemName="Classic Cheeseburger"
                         itemDescription="100% beef patty, cheddar cheese, lettuce, tomato, onion, and pickles on a toasted bun."
                         img={cheeseburger}
-                        price="$9.99"
+                        price="9.99"
                     />
 
                     <MenuFood
                         itemName="BBQ Bacon Burger"
                         itemDescription="Topped with crispy bacon, BBQ sauce, cheddar cheese, and onion rings."
                         img={bacon}
-                        price="$11.99"
+                        price="11.99"
                     />
 
                     <MenuFood
                         itemName="Veggie Delight Burger"
                         itemDescription="Grilled plant-based patty, lettuce, tomato, avocado, and vegan mayo."
                         img={veggieburger}
-                        price="$10.49"
+                        price="10.49"
                     />
 
                 </section>
@@ -199,21 +208,21 @@ const Menu = () => {
                         itemName="Turkey Club Sandwich"
                         itemDescription="Sliced turkey, crispy bacon, lettuce, tomato, and mayo on toasted bread."
                         img={turkey}
-                        price="$9.99"
+                        price="9.99"
                     />
 
                     <MenuFood
                         itemName="Philly Cheesesteak"
                         itemDescription="Tender beef, sautéed peppers, onions, and melted provolone on a hoagie roll."
                         img={cheesesteak}
-                        price="$11.49"
+                        price="11.49"
                     />
 
                     <MenuFood
                         itemName="Caprese Sandwich"
                         itemDescription="Fresh mozzarella, tomato, basil, and balsamic glaze on ciabatta bread."
                         img={caprese}
-                        price="$8.99"
+                        price="8.99"
                     />
 
                 </section>
@@ -229,21 +238,21 @@ const Menu = () => {
                         itemName="Fettuccine Alfredo"
                         itemDescription="Creamy Alfredo sauce over fettuccine noodles, topped with Parmesan."
                         img={fettucine}
-                        price="$13.99"
+                        price="13.99"
                     />
 
                     <MenuFood
                         itemName="Penne Arrabbiata"
                         itemDescription="Penne pasta tossed in a spicy tomato sauce, finished with fresh basil."
                         img={penne}
-                        price="$12.49"
+                        price="12.49"
                     />
 
                     <MenuFood
                         itemName="Seafood Linguine"
                         itemDescription="Linguine with shrimp, scallops, and mussels in a garlic white wine sauce."
                         img={seafood}
-                        price="$16.99"
+                        price="16.99"
                     />
 
 
@@ -260,21 +269,21 @@ const Menu = () => {
                         itemName="Grilled Ribeye Steak"
                         itemDescription="A 12 oz ribeye grilled to your liking, served with mashed potatoes and asparagus."
                         img={ribeye}
-                        price="$22.99"
+                        price="22.99"
                     />
 
                     <MenuFood
                         itemName="BBQ Chicken Platter"
                         itemDescription="Half a chicken glazed with smoky BBQ sauce, served with coleslaw and cornbread."
                         img={chicken}
-                        price="$14.99"
+                        price="14.99"
                     />
 
                     <MenuFood
                         itemName="Grilled Vegetable Skewers"
                         itemDescription="Zucchini, bell peppers, mushrooms, and onions marinated and grilled to perfection."
                         img={vegetable}
-                        price="$10.99"
+                        price="10.99"
                     />
 
                 </section>
