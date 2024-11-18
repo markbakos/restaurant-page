@@ -35,15 +35,39 @@ const Orders = () => {
     }, [status]);
 
 
-    const confirmOrder = (id) => {
-        try {
-            axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`)
-                .then(() => {
-                    displayOrders()
-                })
+    const confirmOrder = async (id) => {
+        try{
+            await axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`, {
+                status: 'Confirmed'
+            })
+            displayOrders()
         }
         catch (e) {
-            console.error(e)
+            console.error('Error confirming order', e)
+        }
+    }
+
+    const cancelOrder = async (id) => {
+        try{
+            await axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`, {
+                status: 'Cancelled'
+            })
+            displayOrders()
+        }
+        catch (e) {
+            console.error('Error cancelling order', e)
+        }
+    }
+
+    const completeOrder = async (id) => {
+        try{
+            await axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`, {
+                status: 'Completed'
+            })
+            displayOrders()
+        }
+        catch (e) {
+            console.error('Error completing order', e)
         }
     }
 
@@ -117,11 +141,39 @@ const Orders = () => {
                             </div>
 
                             {order.status === 'Pending' && (
+                                <div className="flex">
                                 <button
                                     onClick={() => confirmOrder(order._id)}
-                                    className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl w-48 h-14 flex justify-center items-center transition">
+                                    className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
                                     <Check />
-                                </button> )}
+                                </button>
+
+                                <button
+                                    onClick={() => cancelOrder(order._id)}
+                                    className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
+                                    <Close />
+                                </button>
+                                </div>)}
+
+                            {order.status === 'Confirmed' && (
+                                <div className="flex">
+                                    <button
+                                        onClick={() => completeOrder(order._id)}
+                                        className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
+                                        <DoneAll />
+                                    </button>
+                                    <button
+                                        onClick={() => cancelOrder(order._id)}
+                                        className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
+                                        <Close />
+                                    </button>
+                                </div>
+                            )}
+
+                            {order.status === 'Cancelled' && (
+                                <p className="text-gray-500 text-lg">No further actions available.</p>
+                            )}
+
 
                         </div>))}
                 </section>
