@@ -4,7 +4,11 @@ const Order = require('../models/Order');
 
 router.get('/orders', async (req, res) => {
     try {
-        const orders = await Order.find();
+        const { status } = req.query;
+
+        const query = status ? { status } : {};
+
+        const orders = await Order.find(query);
         res.json(orders);
     } catch (e) {
         res.status(500).json({ error: e.message });
