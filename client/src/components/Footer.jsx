@@ -1,9 +1,8 @@
-import 'animate.css'
 import {Link} from "react-router-dom";
 
 const Footer = () => {
   return(
-      <footer className="animate__animated animate__slideInUp sticky bottom-0 left-0 flex w-full h-[3.5rem] bg-amber-700 z-50">
+      <footer className="sticky bottom-0 left-0 flex w-full h-[3.5rem] bg-amber-700 z-50">
 
           {/*Desktop Footer*/}
           <footer className="sm:flex hidden flex-row items-center justify-center w-full">
