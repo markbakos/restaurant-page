@@ -1,11 +1,11 @@
-import Navbar from "./Navbar.jsx";
+import MenuSidebar from "./MenuSidebar.jsx";
 import FooterDoc from "./FooterDoc.jsx";
 import Footer from "./Footer.jsx";
 
 const Layout = ({title, backgroundImage, children}) => {
     return (
         <div className="min-h-screen flex flex-col">
-            <Navbar/>
+            <MenuSidebar/>
             <header className="w-full h-[30vh] sm:h-[40vh] flex justify-center items-center relative">
                 <img
                     className="h-full w-full object-cover object-center absolute inset-0"
