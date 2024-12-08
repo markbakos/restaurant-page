@@ -6,7 +6,7 @@ const FooterDoc = () => {
           <article className="flex flex-col w-1/2">
               <section>
                   <h1 className="text-center text-2xl text-white">Copyright 2024</h1>
-                  <p className="text-center text-white">Made by <a href="https://github.com/markbakos" target="_blank" className="text-blue-700">@markbakos</a></p>
+                  <p className="text-center text-white">Made by <a href="https://github.com/markbakos" target="_blank" className="text-blue-500 hover:text-blue-600 transition">@markbakos</a></p>
               </section>
 
               <nav className="my-5 flex items-center justify-center">
@@ -49,7 +49,7 @@ const FooterDoc = () => {
               </nav>
       </article>
 
-          <article className="flex flex-col w-1/2">
+          <article className="flex flex-col w-1/2 text-white">
               <p>This restaurant is not a real business</p>
               <p>All images are from unsplash, all credit goes to their owners</p>
               <p>This is a project for the purposes of learning</p>
