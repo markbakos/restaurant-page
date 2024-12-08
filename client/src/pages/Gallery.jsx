@@ -1,6 +1,6 @@
 import img from "/gallerybg.jpg";
 import {useEffect, useState} from "react";
-import Navbar from "../components/Navbar.jsx";
+import MenuSidebar from "../components/MenuSidebar.jsx";
 import Footer from "../components/Footer.jsx";
 import FooterDoc from "../components/FooterDoc.jsx";
 import {useLocation} from "react-router-dom";
@@ -35,7 +35,7 @@ const Gallery = () => {
 
     return (
         <>
-            <Navbar />
+            <MenuSidebar />
             <header className="w-screen h-[40vh] sm:h-[30vh] flex justify-center items-center">
                 <img
                     className="h-[40vh] sm:h-[30vh] w-screen object-cover object-center opacity-70 absolute left-0 select-none"

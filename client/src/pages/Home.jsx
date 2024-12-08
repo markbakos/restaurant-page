@@ -11,7 +11,7 @@ import image4 from '/main_scroll/4.jpg'
 import menuDisplay from '/food/menu_display_food.jpg'
 import reserveDisplay from '/reservehomebg.jpg'
 import FooterDoc from "../components/FooterDoc.jsx";
-import Navbar from "../components/Navbar.jsx";
+import MenuSidebar from "../components/MenuSidebar.jsx";
 
 const images = [image1, image2, image3, image4]
 
@@ -35,7 +35,7 @@ const Home = () => {
     return (
 
         <>
-            <Navbar/>
+            <MenuSidebar/>
             <header className="relative h-screen">
                 <AnimatePresence initial={false}>
                     <motion.img
