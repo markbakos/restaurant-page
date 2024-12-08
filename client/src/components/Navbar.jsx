@@ -34,12 +34,8 @@ const Navbar = () => {
                     {!collapsed && (
                         <>
                             <Link to="/"><MenuItem>Home</MenuItem></Link>
-                            <SubMenu label="Menu">
-                                <Link to={'/menu'}><MenuItem>All Items</MenuItem></Link>
-                                <Link to="/menu#deals"><MenuItem>Deals</MenuItem></Link>
-                                <Link to="/menu#breakfast"><MenuItem>Breakfast</MenuItem></Link>
-                                <Link to="/menu#lunch"><MenuItem>Lunch</MenuItem></Link>
-                            </SubMenu>
+                            <Link to={'/menu'}><MenuItem>Menu</MenuItem></Link>
+
                             <SubMenu label="About">
                                 <Link to="/aboutus"><MenuItem>About Us</MenuItem></Link>
                                 <Link to="/gallery"><MenuItem>Gallery</MenuItem></Link>

@@ -1,185 +1,144 @@
-import Navbar from "../components/Navbar.jsx";
-import {useEffect, useState} from "react";
-import axios from "axios";
-
-import HourglassTopIcon from '@mui/icons-material/HourglassTop';
-import Check from '@mui/icons-material/Check';
-import DoneAll from '@mui/icons-material/DoneAll';
-import Close from '@mui/icons-material/Close';
-import img from "/orderbg.jpg";
+import { useEffect, useState } from "react"
+import axios from "axios"
+import Layout from "../components/Layout.jsx"
+import { CheckCircle, XCircle, Clock, CheckCircle2 } from 'lucide-react'
+import img from "/orderbg.jpg"
 
 const Orders = () => {
-
     const [status, setStatus] = useState('Pending')
     const [orders, setOrders] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
-    const displayOrders = () => {
+    const displayOrders = async () => {
         try {
-            axios.get(`https://restaurant-page-backend.onrender.com/api/orders?status=${status}`)
-                .then((response) => {
-                    setOrders(response.data)
-                    console.log(response.data)
-                })
-        }
-        catch (e) {
+            setLoading(true)
+            const response = await axios.get(`https://restaurant-page-backend.onrender.com/api/orders?status=${status}`)
+            setOrders(response.data)
+        } catch (e) {
             console.error(e)
+            setError('Failed to fetch orders. Please try again.')
+        } finally {
+            setLoading(false)
         }
-    }
+    };
 
     useEffect(() => {
         displayOrders()
-    }, []);
+    }, [status])
 
-    useEffect(() => {
-        displayOrders()
-    }, [status]);
-
-
-    const confirmOrder = async (id) => {
-        try{
+    const updateOrderStatus = async (id, newStatus) => {
+        try {
             await axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`, {
-                status: 'Confirmed'
+                status: newStatus
             })
-            displayOrders()
-        }
-        catch (e) {
-            console.error('Error confirming order', e)
+            displayOrders();
+        } catch (e) {
+            console.error(`Error updating order status: ${e}`);
+            setError('Failed to update order status. Please try again.');
         }
     }
 
-    const cancelOrder = async (id) => {
-        try{
-            await axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`, {
-                status: 'Cancelled'
-            })
-            displayOrders()
-        }
-        catch (e) {
-            console.error('Error cancelling order', e)
-        }
+    const statusColors = {
+        Pending: 'bg-yellow-100 text-yellow-800',
+        Confirmed: 'bg-blue-100 text-blue-800',
+        Completed: 'bg-green-100 text-green-800',
+        Cancelled: 'bg-red-100 text-red-800'
     }
 
-    const completeOrder = async (id) => {
-        try{
-            await axios.put(`https://restaurant-page-backend.onrender.com/api/orders/${id}`, {
-                status: 'Completed'
-            })
-            displayOrders()
-        }
-        catch (e) {
-            console.error('Error completing order', e)
-        }
+    const statusIcons = {
+        Pending: <Clock className="w-5 h-5" />,
+        Confirmed: <CheckCircle className="w-5 h-5" />,
+        Completed: <CheckCircle2 className="w-5 h-5" />,
+        Cancelled: <XCircle className="w-5 h-5" />
     }
-
-
 
     return (
-        <>
-            <Navbar/>
+        <Layout title="ORDERS" backgroundImage={img}>
+            <div className="container mx-auto px-4 py-8">
+                <div className="mb-8">
+                    <h2 className="text-2xl font-bold mb-4">Filter by Status</h2>
+                    <div className="flex flex-wrap gap-2">
+                        {['Pending', 'Confirmed', 'Completed', 'Cancelled'].map((statusOption) => (
+                            <button
+                                key={statusOption}
+                                onClick={() => setStatus(statusOption)}
+                                className={`px-4 py-2 rounded-full ${
+                                    status === statusOption
+                                        ? 'bg-amber-600 text-white'
+                                        : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                                } transition-colors duration-200`}
+                            >
+                                {statusOption}
+                            </button>
+                        ))}
+                    </div>
+                </div>
 
-            <header className="w-screen h-[40vh] sm:h-[30vh] flex justify-center items-center">
-                <img
-                    className="h-[40vh] sm:h-[30vh] w-screen object-cover object-center opacity-70 absolute left-0 select-none"
-                    src={img} alt="Title image for Orders Section"
-                />
-                <h1 className="text-center text-5xl z-10 font-semibold text-black select-none">ORDERS</h1>
-            </header>
-            <main>
-                <nav className="flex lg:flex-row flex-col justify-center items-center my-5">
-                    <section className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-                        <button
-                            onClick={() => setStatus('Pending')}
-                            className={`p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl w-48 h-14 flex justify-center items-center transition ${status === 'Pending' ? 'bg-black text-white' : ''}`}>
-                            <HourglassTopIcon/>
-                            Pending
-                        </button>
+                {loading && <p className="text-center">Loading orders...</p>}
+                {error && <p className="text-center text-red-500">{error}</p>}
 
-                        <button
-                            onClick={() => setStatus('Confirmed')}
-                            className={`p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl w-48 h-14 flex justify-center items-center transition ${status === 'Confirmed' ? 'bg-black text-white' : ''}`}>
-                            <Check />
-                            Confirmed
-                        </button>
-
-                        <button
-                            onClick={() => setStatus('Completed')}
-                            className={`p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl w-48 h-14 flex justify-center items-center transition ${status === 'Completed' ? 'bg-black text-white' : ''}`}>
-                            <DoneAll />
-                            Completed
-                        </button>
-
-                        <button
-                            onClick={() => setStatus('Cancelled')}
-                            className={`p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl w-48 h-14 flex justify-center items-center transition ${status === 'Cancelled' ? 'bg-black text-white' : ''}`}>
-                            <Close />
-                            Cancelled
-                        </button>
-                    </section>
-                </nav>
-
-                <section>
-                    {orders.map((order, index) => (
-                        <div key={index} className="flex flex-col justify-center items-center m-4 p-4 border-2 border-black rounded-md">
-                            <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 lg:gap-4 gap-2 lg:mb-3 mb-5">
-                                <h1 className="my-2">{order.customerName}</h1>
-                                <p className="my-2">{order.customerEmail}</p>
-                                <p className="my-2">{order.customerPhone}</p>
-                                <p className="my-2">{order.orderDate}</p>
-                                <p className="my-2 font-bold">Total: ${(order.totalAmount).toFixed(2)}</p>
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {orders.map((order) => (
+                        <div key={order._id} className="bg-white rounded-lg shadow-md p-6">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-semibold">{order.customerName}</h3>
+                                <span className={`px-2 py-1 rounded-full text-xs font-semibold flex items-center ${statusColors[order.status]}`}>
+                                    {statusIcons[order.status]}
+                                    <span className="ml-1">{order.status}</span>
+                                </span>
                             </div>
-
-
-                            <div>
-                                {order.items.map((item, index) => (
-                                    <div key={index} className="grid grid-cols-4">
-                                        <p className="my-2">{item.itemName}</p>
-                                        <p className="my-2">{item.quantity}</p>
-                                        <p className="my-2">${item.price}</p>
-                                        <p className="my-2">${(item.price * item.quantity).toFixed(2)}</p>
-                                    </div>
-                                ))}
+                            <p className="text-sm text-gray-600 mb-2">{order.customerEmail}</p>
+                            <p className="text-sm text-gray-600 mb-2">{order.customerPhone}</p>
+                            <p className="text-sm text-gray-600 mb-4">{order.customerAddress}</p>
+                            <div className="border-t border-gray-200 pt-4 mb-4">
+                                <h4 className="font-semibold mb-2">Order Items:</h4>
+                                <ul className="space-y-2">
+                                    {order.items.map((item, index) => (
+                                        <li key={index} className="flex justify-between text-sm">
+                                            <span>{item.itemName} x {item.quantity}</span>
+                                            <span>${(item.price * item.quantity).toFixed(2)}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-
+                            <div className="flex justify-between items-center">
+                                <p className="font-semibold">Total: ${order.totalAmount.toFixed(2)}</p>
+                                <p className="text-sm text-gray-600">{new Date(order.orderDate).toLocaleString()}</p>
+                            </div>
                             {order.status === 'Pending' && (
-                                <div className="flex">
-                                <button
-                                    onClick={() => confirmOrder(order._id)}
-                                    className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
-                                    <Check />
-                                </button>
-
-                                <button
-                                    onClick={() => cancelOrder(order._id)}
-                                    className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
-                                    <Close />
-                                </button>
-                                </div>)}
-
-                            {order.status === 'Confirmed' && (
-                                <div className="flex">
+                                <div className="mt-4 flex justify-end space-x-2">
                                     <button
-                                        onClick={() => completeOrder(order._id)}
-                                        className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
-                                        <DoneAll />
+                                        onClick={() => updateOrderStatus(order._id, 'Confirmed')}
+                                        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-200"
+                                    >
+                                        Confirm
                                     </button>
                                     <button
-                                        onClick={() => cancelOrder(order._id)}
-                                        className="p-4 m-1 border-2 border-black hover:bg-black hover:text-white text-xl lg:w-48 w-36 h-14 flex justify-center items-center transition">
-                                        <Close />
+                                        onClick={() => updateOrderStatus(order._id, 'Cancelled')}
+                                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-200"
+                                    >
+                                        Cancel
                                     </button>
                                 </div>
                             )}
-
-                            {order.status === 'Cancelled' && (
-                                <p className="text-gray-500 text-lg">No further actions available.</p>
+                            {order.status === 'Confirmed' && (
+                                <div className="mt-4 flex justify-end">
+                                    <button
+                                        onClick={() => updateOrderStatus(order._id, 'Completed')}
+                                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200"
+                                    >
+                                        Complete
+                                    </button>
+                                </div>
                             )}
-
-
-                        </div>))}
-                </section>
-            </main>
-        </>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </Layout>
     )
 }
 
 export default Orders
+
