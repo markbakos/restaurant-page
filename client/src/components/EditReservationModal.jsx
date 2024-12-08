@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { XIcon } from 'lucide-react'
+import { useState } from 'react';
+import { XIcon } from 'lucide-react';
 
-const EditReservationModal = ({ reservation, onClose, onUpdate }) => {
+const EditReservationModal = ({ reservation, onClose, onUpdate, onDelete }) => {
     const [editedReservation, setEditedReservation] = useState({
         ...reservation,
         date: reservation.date.slice(0, 16)
@@ -109,6 +109,18 @@ const EditReservationModal = ({ reservation, onClose, onUpdate }) => {
                             className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                         >
                             Save Changes
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                if (window.confirm('Are you sure you want to delete this reservation?')) {
+                                    onDelete();
+                                    onClose();
+                                }
+                            }}
+                            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        >
+                            Delete Reservation
                         </button>
                     </div>
                 </form>

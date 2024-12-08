@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Layout from "../components/Layout.jsx";
-import { CalendarIcon, ClockIcon, UserIcon, PhoneIcon, MailIcon, PencilIcon } from 'lucide-react';
-import EditReservationModal from '../components/EditReservationModal.jsx';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import Layout from "../components/Layout.jsx"
+import { CalendarIcon, ClockIcon, UserIcon, PhoneIcon, MailIcon, PencilIcon } from 'lucide-react'
+import EditReservationModal from '../components/EditReservationModal.jsx'
 
 const Reservations = () => {
     const [reservations, setReservations] = useState([])
@@ -45,6 +45,23 @@ const Reservations = () => {
         } catch (err) {
             console.error('Error updating reservation:', err)
             setError('Failed to update reservation. Please try again.')
+        }
+    }
+
+    const handleDeleteReservation = async (id) => {
+        if (!id) {
+            console.error("Invalid reservation ID");
+            setError("Failed to delete reservation. Invalid ID.");
+            return;
+        }
+
+        try {
+            await axios.delete(`https://restaurant-page-backend.onrender.com/api/reservations/${id}`)
+            setEditingReservation(null)
+            fetchReservations(currentPage)
+        } catch (error) {
+            console.error("Error deleting reservation:", error)
+            setError("Failed to delete reservation. Please try again.")
         }
     }
 
@@ -112,7 +129,7 @@ const Reservations = () => {
                 Page {currentPage} of {totalPages}
               </span>
                             <button
-                                onClick={() => handlePageChange(currentPage + 1)}
+                                onClick={() => handlePageChange(parseInt(currentPage) + 1)}
                                 disabled={currentPage === totalPages}
                                 className="px-4 py-2 ml-2 bg-amber-700 text-white rounded disabled:bg-gray-300"
                             >
@@ -127,11 +144,12 @@ const Reservations = () => {
                     reservation={editingReservation}
                     onClose={() => setEditingReservation(null)}
                     onUpdate={handleUpdateReservation}
+                    onDelete={() => handleDeleteReservation(editingReservation._id)}
                 />
             )}
         </Layout>
     )
 }
 
-export default Reservations;
+export default Reservations
 
