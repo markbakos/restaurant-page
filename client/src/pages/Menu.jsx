@@ -86,7 +86,7 @@ const Menu = () => {
     return (
         <Layout title="MENU" backgroundImage={img}>
             <div className="container mx-auto px-4">
-                <Link to="/cart" className="fixed sm:top-3.5 lg:top-8 sm:right-4 lg:right-8 z-30 bg-amber-700 text-white p-2 rounded-full shadow-lg">
+                <Link to="/cart" className="fixed top-3.5 sm:top-8 right-4 sm:right-8 z-30 bg-amber-700 text-white p-2 rounded-full shadow-lg">
                     <ShoppingCart size={24} />
                 </Link>
 

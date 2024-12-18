@@ -1,13 +1,15 @@
+import {useState} from "react";
+import { ShoppingCart } from "lucide-react"
 
 const MenuFood = ({itemName, itemDescription , img, price}) => {
+    const [isHovered, setIsHovered] = useState(false)
 
     const addToCart = () => {
         const cart = JSON.parse(localStorage.getItem("cart")) || []
-
         const itemIndex = cart.findIndex(item => item.name === itemName)
 
         if (itemIndex === -1) {
-            cart.push({name: itemName, price: price, quantity: 1})
+            cart.push({ name: itemName, price: price, quantity: 1 })
         } else {
             cart[itemIndex].quantity++
         }
@@ -17,24 +19,34 @@ const MenuFood = ({itemName, itemDescription , img, price}) => {
     }
 
     return (
-        <section className="flex sm:flex-row flex-col justify-between m-2 p-4 lg:w-[48rem] lg:h-72 md:w-[90vw] md:h-[16rem] sm:w-[90vw] sm:h-[40rem] bg-slate-300 rounded-md">
-            <figure className="lg:w-1/2 md:w-full sm:w-full p-2 flex justify-center items-center">
-                <img src={img} alt="Cheeseburger" className="lg:w-[24rem] lg:h-[16rem] object-cover object-center rounded-md"/>
-            </figure>
-            <figcaption className="lg:w-1/2 md:w-full sm:w-full p-2 flex justify-center items-center flex-col">
-                <h1
-                    className="text-2xl font-semibold">
-                    {itemName} - ${price}
-                </h1>
-                <p className="my-3">
-                    {itemDescription}
-                </p>
-                <button onClick={addToCart} className="w-32 h-10 border-black border-2 hover:bg-black hover:text-white transition">
-                    Add to cart
+        <div
+            className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div className="relative">
+                <img
+                    src={img}
+                    alt={itemName}
+                    className="w-full h-48 object-cover transition-transform duration-300"
+                    style={{transform: isHovered ? 'scale(1.05)' : 'scale(1)'}}
+                />
+                <span
+                    className="absolute top-2 right-2 bg-amber-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
+          ${price}
+        </span>
+            </div>
+            <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">{itemName}</h3>
+                <p className="text-gray-600 text-sm mb-4">{itemDescription}</p>
+                <button
+                    onClick={addToCart}
+                    className="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center"
+                >
+                    <ShoppingCart className="mr-2 h-4 w-4"/> Add to cart
                 </button>
-            </figcaption>
-
-        </section>
+            </div>
+        </div>
     )
 }
 
