@@ -1,7 +1,7 @@
 # Restaurant Application  
 
-Welcome to the **Restaurant Application**! This full-stack web application provides an intuitive interface for customers to place orders, reserve tables, 
-and for administrators to manage these requests efficiently. Built with the **MERN stack**, it combines a sleek and responsive frontend with backend to deliver an exceptional user experience.
+This **Restaurant Template** full-stack web application provides an interface for customers to place orders, reserve tables,
+and for administrators to manage these requests efficiently. Built with the **MERN stack**.
 
 ---
 
@@ -23,21 +23,18 @@ and for administrators to manage these requests efficiently. Built with the **ME
 ## 🔧 Tech Stack  
 
 ### **Frontend**  
-- **ReactJS**: Modular components for a seamless user interface.  
-- **TailwindCSS**: Utility-first CSS framework for a visually appealing and responsive design.
+- **ReactJS**
+- **TailwindCSS**
 
 ### **Backend**  
-- **ExpressJS**: RESTful APIs for handling customer and admin requests.  
-- **MongoDB**: Database for storing orders, reservations, and customer information.  
-
-### **Deployment**  
-- **Render**: Deployed for live access and testing.  
+- **ExpressJS**
+- **MongoDB**
 
 ---
 
 ## 🚀 Live Demo  
 
-🎉 **Check out the live application**: [Restaurant App](restaurant-page-y9ps.onrender.com)  
+**Check out the live application**: [Restaurant App](restaurant-page-y9ps.onrender.com)  
 
 ---
 
